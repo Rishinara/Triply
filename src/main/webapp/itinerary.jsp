@@ -760,7 +760,7 @@ if (activities == null ||
             if (previousDate != null) {
 %>
 
-</div>
+
 
 <%
             }
