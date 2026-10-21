@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Create Account | Triply</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: #f7f7f2;
+    color: #17252a;
+}
+
+.auth-page {
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+}
+
+
+/* IMAGE */
+
+.travel-side {
+    position: relative;
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            rgba(7,45,52,0.25),
+            rgba(7,45,52,0.84)
+        ),
+        url("images/hero/travel-hero1.jpeg");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: flex-end;
+
+    padding: 50px;
+
+    color: white;
+}
+
+.brand {
+    position: absolute;
+
+    top: 32px;
+    left: 50px;
+
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.travel-content h1 {
+    font-size: 43px;
+    margin-bottom: 14px;
+}
+
+.travel-content p {
+    max-width: 480px;
+
+    line-height: 1.7;
+    opacity: 0.9;
+}
+
+
+/* FORM */
+
+.form-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-container h2 {
+    font-size: 32px;
+    margin-bottom: 7px;
+}
+
+.subtitle {
+    color: #6b7280;
+    margin-bottom: 23px;
+}
+
+
+/* FORM GRID */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 16px;
+}
+
+.full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+input {
+    width: 100%;
+
+    padding: 12px 13px;
+
+    border: 1px solid #d7ddd9;
+    border-radius: 9px;
+
+    font-size: 14px;
+    background: white;
+}
+
+input:focus {
+    outline: none;
+
+    border-color: #087f8c;
+
+    box-shadow:
+        0 0 0 3px rgba(8,127,140,0.08);
+}
+
+
+/* INVALID FIELD */
+
+input.invalid {
+    border-color: #dc2626;
+}
+
+
+/* PASSWORD */
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 65px;
+}
+
+.show-password {
+    position: absolute;
+
+    right: 11px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+    background: transparent;
+
+    color: #087f8c;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* PASSWORD RULES */
+
+.password-rules {
+    margin-top: 9px;
+
+    background: #f5f7f5;
+    padding: 11px 13px;
+
+    border-radius: 9px;
+
+    font-size: 12px;
+}
+
+.rule {
+    display: block;
+    margin: 5px 0;
+
+    color: #6b7280;
+}
+
+.rule.valid {
+    color: #15803d;
+    font-weight: 700;
+}
+
+
+/* BUTTON */
+
+.register-button {
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 13px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #087f8c;
+    color: white;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.register-button:hover {
+    background: #066874;
+}
+
+
+/* MESSAGE */
+
+.message {
+    display: none;
+
+    margin-bottom: 18px;
+
+    padding: 12px 14px;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+}
+
+.message.error {
+    display: block;
+
+    background: #fef2f2;
+    color: #b91c1c;
+}
+
+.bottom-text {
+    text-align: center;
+
+    margin-top: 19px;
+
+    color: #6b7280;
+
+    font-size: 14px;
+}
+
+.bottom-text a {
+    color: #087f8c;
+
+    text-decoration: none;
+    font-weight: 800;
+}
+
+
+@media(max-width:850px) {
+
+    .auth-page {
+        grid-template-columns: 1fr;
+    }
+
+    .travel-side {
+        min-height: 280px;
+        padding: 35px;
+    }
+
+    .brand {
+        left: 35px;
+        top: 25px;
+    }
+
+    .form-side {
+        padding: 45px 25px;
+    }
+}
+
+
+@media(max-width:550px) {
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full {
+        grid-column: auto;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="auth-page">
+
+
+<!-- IMAGE -->
+
+<section class="travel-side">
+
+<div class="brand">
+    Triply
+</div>
+
+
+<div class="travel-content">
+
+    <h1>
+        Your next trip starts here.
+    </h1>
+
+    <p>
+        Create your account, invite friends,
+        set your group budget and discover
+        destinations together.
+    </p>
+
+</div>
+
+</section>
+
+
+<!-- REGISTER -->
+
+<section class="form-side">
+
+<div class="form-container">
+
+
+<h2>Create your account</h2>
+
+<p class="subtitle">
+    Start planning memorable trips with your group.
+</p>
+
+
+<div id="message"
+     class="message">
+</div>
+
+
+<form action="register"
+      method="post"
+      id="registerForm"
+      onsubmit="return validateForm();">
+
+
+<div class="form-grid">
+
+
+<!-- NAME -->
+
+<div class="form-group full">
+
+<label for="name">
+    Full Name
+</label>
+
+<input type="text"
+       id="name"
+       name="name"
+       placeholder="Enter your full name"
+       minlength="3"
+       maxlength="50"
+       autocomplete="name"
+       required>
+
+</div>
+
+
+<!-- EMAIL -->
+
+<div class="form-group">
+
+<label for="email">
+    Email Address
+</label>
+
+<input type="email"
+       id="email"
+       name="email"
+       placeholder="name@example.com"
+       maxlength="100"
+       autocomplete="email"
+       required>
+
+</div>
+
+
+<!-- PHONE -->
+
+<div class="form-group">
+
+<label for="phone">
+    Phone Number
+</label>
+
+<input type="tel"
+       id="phone"
+       name="phone"
+       placeholder="10-digit mobile number"
+       maxlength="10"
+       inputmode="numeric"
+       autocomplete="tel"
+       required>
+
+</div>
+
+
+<!-- PASSWORD -->
+
+<div class="form-group full">
+
+<label for="password">
+    Password
+</label>
+
+
+<div class="password-wrapper">
+
+<input type="password"
+       id="password"
+       name="password"
+       placeholder="Create a strong password"
+       minlength="8"
+       maxlength="50"
+       autocomplete="new-password"
+       oninput="checkPasswordRules()"
+       required>
+
+<button type="button"
+        class="show-password"
+        onclick="togglePassword(
+            'password',
+            this
+        )">
+
+    Show
+
+</button>
+
+</div>
+
+
+<div class="password-rules">
+
+    <span id="lengthRule"
+          class="rule">
+        Minimum 8 characters
+    </span>
+
+    <span id="upperRule"
+          class="rule">
+        At least one uppercase letter
+    </span>
+
+    <span id="lowerRule"
+          class="rule">
+        At least one lowercase letter
+    </span>
+
+    <span id="numberRule"
+          class="rule">
+        At least one number
+    </span>
+
+    <span id="specialRule"
+          class="rule">
+        At least one special character
+    </span>
+
+</div>
+
+</div>
+
+
+<!-- CONFIRM -->
+
+<div class="form-group full">
+
+<label for="confirmPassword">
+    Confirm Password
+</label>
+
+
+<div class="password-wrapper">
+
+<input type="password"
+       id="confirmPassword"
+       name="confirmPassword"
+       placeholder="Enter your password again"
+       minlength="8"
+       maxlength="50"
+       autocomplete="new-password"
+       required>
+
+<button type="button"
+        class="show-password"
+        onclick="togglePassword(
+            'confirmPassword',
+            this
+        )">
+
+    Show
+
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<button type="submit"
+        class="register-button">
+
+    Create Account
+
+</button>
+
+
+</form>
+
+
+<p class="bottom-text">
+
+    Already have an account?
+
+    <a href="login.html">
+        Login
+    </a>
+
+</p>
+
+
+</div>
+
+</section>
+
+
+</div>
+
+
+<script>
+
+function showMessage(text) {
+
+    const message =
+        document.getElementById("message");
+
+    message.innerText = text;
+    message.className = "message error";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+function setInvalid(id) {
+
+    document
+        .getElementById(id)
+        .classList.add("invalid");
+}
+
+
+function clearInvalidFields() {
+
+    const fields =
+        document.querySelectorAll("input");
+
+    fields.forEach(function(field) {
+
+        field.classList.remove("invalid");
+
+    });
+}
+
+
+function validateForm() {
+
+    clearInvalidFields();
+
+
+    const name =
+        document.getElementById("name")
+        .value.trim();
+
+
+    const email =
+        document.getElementById("email")
+        .value.trim();
+
+
+    const phone =
+        document.getElementById("phone")
+        .value.trim();
+
+
+    const password =
+        document.getElementById("password")
+        .value;
+
+
+    const confirmPassword =
+        document.getElementById(
+            "confirmPassword"
+        ).value;
+
+
+    const namePattern =
+        /^[A-Za-z ]{3,50}$/;
+
+
+    const emailPattern =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+    const phonePattern =
+        /^[6-9][0-9]{9}$/;
+
+
+    const passwordPattern =
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9\s]).{8,50}$/;
+
+
+    if (!namePattern.test(name)) {
+
+        setInvalid("name");
+
+        showMessage(
+            "Name must contain 3 to 50 letters and spaces only."
+        );
+
+        return false;
+    }
+
+
+    if (!emailPattern.test(email)) {
+
+        setInvalid("email");
+
+        showMessage(
+            "Please enter a valid email address."
+        );
+
+        return false;
+    }
+
+
+    if (!phonePattern.test(phone)) {
+
+        setInvalid("phone");
+
+        showMessage(
+            "Phone number must contain exactly 10 digits and start with 6, 7, 8 or 9."
+        );
+
+        return false;
+    }
+
+
+    if (!passwordPattern.test(password)) {
+
+        setInvalid("password");
+
+        showMessage(
+            "Password must have at least 8 characters, including uppercase, lowercase, number and special character."
+        );
+
+        return false;
+    }
+
+
+    if (password !== confirmPassword) {
+
+        setInvalid("confirmPassword");
+
+        showMessage(
+            "Password and confirm password do not match."
+        );
+
+        return false;
+    }
+
+
+    return true;
+}
+
+
+function checkPasswordRules() {
+
+    const password =
+        document.getElementById("password")
+        .value;
+
+
+    updateRule(
+        "lengthRule",
+        password.length >= 8
+    );
+
+
+    updateRule(
+        "upperRule",
+        /[A-Z]/.test(password)
+    );
+
+
+    updateRule(
+        "lowerRule",
+        /[a-z]/.test(password)
+    );
+
+
+    updateRule(
+        "numberRule",
+        /[0-9]/.test(password)
+    );
+
+
+    updateRule(
+        "specialRule",
+        /[^A-Za-z0-9\s]/.test(password)
+    );
+}
+
+
+function updateRule(id, valid) {
+
+    const rule =
+        document.getElementById(id);
+
+    if (valid) {
+
+        rule.classList.add("valid");
+
+    } else {
+
+        rule.classList.remove("valid");
+    }
+}
+
+
+function togglePassword(id, button) {
+
+    const input =
+        document.getElementById(id);
+
+
+    if (input.type === "password") {
+
+        input.type = "text";
+        button.innerText = "Hide";
+
+    } else {
+
+        input.type = "password";
+        button.innerText = "Show";
+    }
+}
+
+
+/* Server validation messages */
+
+const params =
+    new URLSearchParams(window.location.search);
+
+
+const error =
+    params.get("error");
+
+
+if (error === "email") {
+
+    showMessage(
+        "This email address is already registered."
+    );
+
+}
+else if (error === "name") {
+
+    showMessage(
+        "Name must contain 3 to 50 letters and spaces only."
+    );
+
+}
+else if (error === "emailformat") {
+
+    showMessage(
+        "Please enter a valid email address."
+    );
+
+}
+else if (error === "phone") {
+
+    showMessage(
+        "Phone number must contain exactly 10 digits and start with 6, 7, 8 or 9."
+    );
+
+}
+else if (error === "passwordrules") {
+
+    showMessage(
+        "Password must contain uppercase, lowercase, number, special character and at least 8 characters."
+    );
+
+}
+else if (error === "password") {
+
+    showMessage(
+        "Password and confirm password do not match."
+    );
+
+}
+else if (error === "invalid") {
+
+    showMessage(
+        "Please complete all required fields."
+    );
+
+}
+else if (error === "server") {
+
+    showMessage(
+        "Registration failed. Please try again."
+    );
+}
+
+</script>
+
+
+</body>
+</html>

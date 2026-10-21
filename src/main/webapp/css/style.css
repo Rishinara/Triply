@@ -1,0 +1,290 @@
+@charset "UTF-8";
+
+:root {
+    --bg: #f7f7f2;
+    --surface: #ffffff;
+    --text: #17252a;
+    --muted: #6b7280;
+    --primary: #087f8c;
+    --primary-dark: #066874;
+    --accent: #f4a261;
+    --border: #e7e7e2;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+a {
+    text-decoration: none;
+}
+
+/* NAVBAR */
+
+.navbar {
+    height: 72px;
+    background: rgba(255,255,255,0.96);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: var(--text);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.nav-user {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* BUTTONS */
+
+.btn-primary {
+    display: inline-block;
+    border: none;
+    background: var(--primary);
+    color: white !important;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn-light {
+    display: inline-block;
+    background: white;
+    color: var(--text);
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    border: 1px solid var(--border);
+}
+
+/* HERO */
+
+.hero {
+    width: 86%;
+    max-width: 1250px;
+    min-height: 480px;
+    margin: 35px auto;
+    border-radius: 26px;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(8, 45, 50, 0.84) 0%,
+            rgba(8, 45, 50, 0.62) 45%,
+            rgba(8, 45, 50, 0.10) 100%
+        ),
+        url("../images/hero/travel-hero1.jpeg");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    width: 55%;
+    padding: 60px;
+    color: white;
+}
+
+.hero-tag {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c7f0f2;
+}
+
+.hero h1 {
+    font-size: 54px;
+    line-height: 1.08;
+    margin: 15px 0;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #e5eeee;
+    max-width: 580px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+/* MAIN */
+
+.page-container {
+    width: 86%;
+    max-width: 1250px;
+    margin: 55px auto;
+}
+
+.section-heading {
+    margin-bottom: 25px;
+}
+
+.section-heading h2 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.section-heading p {
+    margin: 0;
+    color: var(--muted);
+}
+
+/* DASHBOARD CARDS */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.dashboard-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px;
+    transition: 0.2s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-4px);
+}
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #e4f3f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.dashboard-card h3 {
+    margin: 0 0 10px;
+    font-size: 21px;
+}
+
+.dashboard-card p {
+    color: var(--muted);
+    line-height: 1.6;
+    min-height: 50px;
+}
+
+.card-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* FOOTER */
+
+.footer {
+    margin-top: 70px;
+    padding: 30px 7%;
+    background: #102f33;
+    color: #d7e5e6;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        min-height: 430px;
+    }
+
+    .hero-content {
+        width: 85%;
+        padding: 40px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .nav-user {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 0 4%;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .hero {
+        width: 92%;
+    }
+
+    .hero-content {
+        width: 100%;
+        padding: 30px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .page-container {
+        width: 92%;
+    }
+}

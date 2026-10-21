@@ -1,0 +1,21 @@
+# Eclipse
+.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+
+# Java
+*.class
+
+# Tomcat
+Servers/
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local database credentials
+src/main/resources/db.properties

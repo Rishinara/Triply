@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login | Triply</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: #f7f7f2;
+    color: #17252a;
+}
+
+.auth-page {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+}
+
+/* LEFT SIDE */
+
+.travel-side {
+    position: relative;
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            rgba(7, 45, 52, 0.25),
+            rgba(7, 45, 52, 0.82)
+        ),
+        url("images/hero/travel-hero1.jpeg");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: flex-end;
+
+    padding: 55px;
+    color: white;
+}
+
+.travel-content {
+    max-width: 600px;
+}
+
+.brand {
+    position: absolute;
+    top: 35px;
+    left: 55px;
+
+    font-size: 30px;
+    font-weight: 800;
+    color: white;
+}
+
+.travel-content h1 {
+    font-size: 48px;
+    line-height: 1.08;
+    margin-bottom: 15px;
+}
+
+.travel-content p {
+    max-width: 520px;
+    font-size: 17px;
+    line-height: 1.7;
+    opacity: 0.9;
+}
+
+
+/* RIGHT SIDE */
+
+.form-side {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 430px;
+}
+
+.form-container h2 {
+    font-size: 34px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #6b7280;
+    line-height: 1.5;
+    margin-bottom: 28px;
+}
+
+label {
+    display: block;
+    margin-bottom: 7px;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+input {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #d7ddd9;
+    border-radius: 10px;
+
+    background: white;
+
+    font-size: 15px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #087f8c;
+    box-shadow: 0 0 0 3px rgba(8,127,140,0.08);
+}
+
+
+/* PASSWORD */
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 75px;
+}
+
+.show-password {
+    position: absolute;
+
+    right: 13px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+    background: transparent;
+
+    color: #087f8c;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* BUTTON */
+
+.login-button {
+    width: 100%;
+
+    margin-top: 6px;
+    padding: 13px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #087f8c;
+    color: white;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background: #066874;
+}
+
+
+/* MESSAGE */
+
+.message {
+    display: none;
+
+    margin-bottom: 20px;
+    padding: 12px 14px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+}
+
+.message.success {
+    display: block;
+    background: #ecfdf3;
+    color: #166534;
+}
+
+.message.error {
+    display: block;
+    background: #fef2f2;
+    color: #b91c1c;
+}
+
+.bottom-text {
+    text-align: center;
+    margin-top: 22px;
+
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.bottom-text a {
+    color: #087f8c;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+
+@media(max-width:850px) {
+
+    .auth-page {
+        grid-template-columns: 1fr;
+    }
+
+    .travel-side {
+        min-height: 320px;
+        padding: 35px;
+    }
+
+    .brand {
+        top: 25px;
+        left: 35px;
+    }
+
+    .travel-content h1 {
+        font-size: 36px;
+    }
+
+    .form-side {
+        min-height: auto;
+        padding: 50px 25px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<div class="auth-page">
+
+
+<!-- TRAVEL IMAGE -->
+
+<section class="travel-side">
+
+    <div class="brand">
+        Triply
+    </div>
+
+    <div class="travel-content">
+
+        <h1>
+            Plan together.<br>
+            Travel better.
+        </h1>
+
+        <p>
+            Create trips with friends, manage your budget,
+            choose destinations and build your itinerary
+            together.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- LOGIN -->
+
+<section class="form-side">
+
+<div class="form-container">
+
+
+<h2>Welcome back</h2>
+
+<p class="subtitle">
+    Sign in to continue planning your next trip.
+</p>
+
+
+<div id="message"
+     class="message">
+</div>
+
+
+<form action="login"
+      method="post"
+      onsubmit="return validateLogin();">
+
+
+<div class="form-group">
+
+    <label for="email">
+        Email Address
+    </label>
+
+    <input type="email"
+           id="email"
+           name="email"
+           placeholder="name@example.com"
+           maxlength="100"
+           autocomplete="email"
+           required>
+
+</div>
+
+
+<div class="form-group">
+
+    <label for="password">
+        Password
+    </label>
+
+
+    <div class="password-wrapper">
+
+        <input type="password"
+               id="password"
+               name="password"
+               placeholder="Enter your password"
+               autocomplete="current-password"
+               required>
+
+        <button type="button"
+                class="show-password"
+                onclick="togglePassword()">
+
+            Show
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<button type="submit"
+        class="login-button">
+
+    Login
+
+</button>
+
+
+</form>
+
+
+<p class="bottom-text">
+
+    Don't have an account?
+
+    <a href="register.html">
+        Create Account
+    </a>
+
+</p>
+
+
+</div>
+
+</section>
+
+
+</div>
+
+
+<script>
+
+function showMessage(text, type) {
+
+    const message =
+        document.getElementById("message");
+
+    message.innerText = text;
+    message.className = "message " + type;
+}
+
+
+function validateLogin() {
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+
+    const emailPattern =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+    if (email === "" || password === "") {
+
+        showMessage(
+            "Please enter both email and password.",
+            "error"
+        );
+
+        return false;
+    }
+
+
+    if (!emailPattern.test(email)) {
+
+        showMessage(
+            "Please enter a valid email address.",
+            "error"
+        );
+
+        return false;
+    }
+
+
+    return true;
+}
+
+
+function togglePassword() {
+
+    const password =
+        document.getElementById("password");
+
+    const button =
+        document.querySelector(".show-password");
+
+
+    if (password.type === "password") {
+
+        password.type = "text";
+        button.innerText = "Hide";
+
+    } else {
+
+        password.type = "password";
+        button.innerText = "Show";
+    }
+}
+
+
+/* Servlet messages */
+
+const params =
+    new URLSearchParams(window.location.search);
+
+
+if (params.get("registered") === "true") {
+
+    showMessage(
+        "Account created successfully. Please login.",
+        "success"
+    );
+}
+
+
+if (params.get("error") === "invalid") {
+
+    showMessage(
+        "Invalid email or password.",
+        "error"
+    );
+}
+
+
+if (params.get("error") === "empty") {
+
+    showMessage(
+        "Please enter both email and password.",
+        "error"
+    );
+}
+
+</script>
+
+
+</body>
+</html>
